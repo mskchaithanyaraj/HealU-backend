@@ -36,6 +36,18 @@ app.post('/api/feedback', async (req, res) => {
   }
 });
 
+// GET endpoint to fetch all feedback
+app.get('/api/feedback', async (req, res) => {
+    try {
+      const feedbacks = await Feedback.find().sort({ createdAt: -1 }); // Sort by newest first
+      res.status(200).json(feedbacks);
+    } catch (error) {
+      console.error('Error fetching feedback:', error);
+      res.status(500).json({ message: 'Error fetching feedback' });
+    }
+  });
+  
+
 // Start server
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
