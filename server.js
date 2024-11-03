@@ -8,7 +8,7 @@ const PORT = process.env.PORT || 5000;
 
 // CORS options
 const corsOptions = {
-  origin: 'https://healuonline.netlify.app', 
+  origin: 'https://healuonline.netlify.app/', 
   optionsSuccessStatus: 200,
 };
 
@@ -40,6 +40,7 @@ app.post('/api/feedback', async (req, res) => {
 app.get('/api/feedback', async (req, res) => {
     try {
       const feedbacks = await Feedback.find().sort({ createdAt: -1 }); // Sort by newest first
+      console.log('Feedback data:', feedbacks);
       res.status(200).json(feedbacks);
     } catch (error) {
       console.error('Error fetching feedback:', error);
