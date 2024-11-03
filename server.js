@@ -8,7 +8,7 @@ const PORT = process.env.PORT || 5000;
 
 // CORS options
 const corsOptions = {
-  origin: 'http://healuonline.netlify.app', 
+  origin: 'https://healuonline.netlify.app', 
   optionsSuccessStatus: 200,
 };
 
