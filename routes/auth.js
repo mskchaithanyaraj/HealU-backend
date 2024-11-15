@@ -5,11 +5,16 @@ const User = require("../models/User");
 require("dotenv").config();
 
 const router = express.Router();
-const JWT_SECRET = process.env.JWT_SECRET; // Replace with an environment variable in production
+const JWT_SECRET = process.env.JWT_SECRET;
 
 // Register
 router.post("/register", async (req, res) => {
   const { name, email, password } = req.body;
+
+  // Check if all required fields are provided
+  if (!name || !email || !password) {
+    return res.status(400).json({ message: "All fields are required" });
+  }
 
   try {
     const hashedPassword = await bcrypt.hash(password, 10);
