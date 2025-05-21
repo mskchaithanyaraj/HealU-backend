@@ -12,7 +12,7 @@ const PORT = process.env.PORT || 5000;
 
 // CORS options to allow requests from localhost:3000
 const corsOptions = {
-  origin: "https://healuonline.netlify.app",
+  origin: ["https://healuonline.netlify.app", "http://localhost:3000"],
   optionsSuccessStatus: 200,
 };
 
