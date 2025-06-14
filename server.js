@@ -12,7 +12,7 @@ const PORT = process.env.PORT || 5000;
 
 const allowedOrigins = [
   "https://healuonline.netlify.app",
-  "http://localhost:3000",
+  // "http://localhost:3000",
   "http://healu.chaithanyaraj.live",
   "https://healu.chaithanyaraj.live",
 ];
