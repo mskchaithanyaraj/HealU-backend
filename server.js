@@ -1,4 +1,5 @@
 const express = require("express");
+const corsMiddleware = require("./middleware/corsConfig");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const cors = require("cors");
@@ -10,27 +11,8 @@ require("dotenv").config();
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-const allowedOrigins = [
-  "https://healuonline.netlify.app",
-  // "http://localhost:3000",
-  "http://healu.chaithanyaraj.live",
-  "https://healu.chaithanyaraj.live",
-];
-
-const corsOptions = {
-  origin: function (origin, callback) {
-    if (!origin || allowedOrigins.includes(origin)) {
-      callback(null, true);
-    } else {
-      callback(new Error("Not allowed by CORS"));
-    }
-  },
-  credentials: true,
-  optionsSuccessStatus: 200,
-};
-
-app.use(cors(corsOptions));
-app.options("*", cors(corsOptions));
+app.use(corsMiddleware); // Global
+app.options("*", corsMiddleware);
 app.use(bodyParser.json());
 
 // MongoDB connection

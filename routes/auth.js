@@ -2,9 +2,11 @@ const express = require("express");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const User = require("../models/User");
+const corsMiddleware = require("../middleware/corsConfig");
 require("dotenv").config();
 
 const router = express.Router();
+router.use(corsMiddleware);
 const JWT_SECRET = process.env.JWT_SECRET;
 
 // Register
